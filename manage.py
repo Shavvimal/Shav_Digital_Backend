@@ -2,6 +2,16 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from django.core.management.commands.runserver import Command as runserver
+from django.core.management.base import BaseCommand
+
+runserver.default_port = os.environ.get('PORT', 3000)
+runserver.default_addr = '0.0.0.0'
+
+class Command(runserver):
+    def handle(self, *args, **options):
+        options.setdefault('addrport', '0.0.0.0:8001')
+        super(Command, self).handle(*args, **options)
 
 
 def main():

@@ -22,7 +22,7 @@ python manage.py runserver
 ## Commands Docker
 
 $ docker build -t web:latest .
-$ docker run -d --name django-backend -e "PORT=8000" -e "DEBUG=0" -p 8000:8000 web:latest
+$ docker run -d --name django-backend -e "PORT=8000" -e "DEBUG=1" -p 8000:8000 web:latest
 $ docker exec -it web  bash
 $ docker exec -it django-backend //bin//sh
 
