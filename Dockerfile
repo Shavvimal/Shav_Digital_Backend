@@ -31,8 +31,13 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
-RUN adduser -D myuser
-USER myuser
+RUN python manage.py collectstatic --noinput
 
+RUN adduser -D myuser
+USER root
+RUN chown myuser /app
+RUN chown myuser /app/db.sqlite3
+USER myuser
+#chown myuser db.sqlite3 
  
 CMD gunicorn blog_backend.wsgi:application --bind 0.0.0.0:$PORT

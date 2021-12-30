@@ -3,7 +3,7 @@ from .views import BlogPostListView, BlogPostDetailView, BlogPostFeaturedView, B
 
 urlpatterns = [
     path('', BlogPostListView.as_view()),
-    path('featured', BlogPostFeaturedView.as_view()),
+    path('post', BlogPostFeaturedView.as_view()),
     path('category', BlogPostCategoryView.as_view()),
     path('categorychapter', BlogPostCategoryChapterView.as_view()),
     path('<slug>', BlogPostDetailView.as_view()),
